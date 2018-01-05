@@ -1,0 +1,9 @@
+{% if test_bus_stops_list %}
+    <ul>
+    {% for Bus in test_bus_stops_list %}
+        <li>{{Bus.number_bus}} {{ Bus.stop_1 }} {{ Bus.stop_2 }} {{ Bus.stop_3 }} {{ Bus.stop_4 }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No Bus</p>
+{% endif %}
