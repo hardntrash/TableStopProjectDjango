@@ -9,6 +9,8 @@ class Bus_numbers(models.Model):
     class Meta:
         db_table = 'tableBus'
     number = models.IntegerField(unique=True)
+    def __str__(self):
+        return self.number
 
 class Bus_Stops(models.Model):
     class Meta:
@@ -16,3 +18,6 @@ class Bus_Stops(models.Model):
     bus = models.ForeignKey(Bus_numbers)
     name_stop = models.CharField(max_length=500)
     time = models.CharField(max_length=500)
+
+    def __str__(self):
+        return self.name_stop

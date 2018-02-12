@@ -1,0 +1,8 @@
+{% block content %}
+<form  method="get">
+  {% csrf_token %}
+  {{ form.numberBus }}
+  {{ form.nameStop }}
+  <input type="submit" value="Показать расписание">
+</form>
+{% endblock %}
