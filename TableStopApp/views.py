@@ -1,12 +1,20 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from .models import Bus_Stops
-from django.views import generic
+from django.http import HttpResponseRedirect
+from django.shortcuts import render
+from forms import BusForm
+
 
 # Create your views here.
+def BusForm(request):
+    if request.method == 'GET':
 
-class Table_Stops(generic.ListView):
-    template_name = 'TableStopApp/stops.html'
-    context_object_name = "test_bus_stops_list"
-    def get_queryset(self):
-        return Bus_Stops.objects.all()
+        form = BusForm(request.GET)
+
+        if form.is_valid():
+            return HttpResponseRedirect('/about/')
+
+    else:
+        form = BusForm(request.GET)
+
+    return render(request, 'TableStopApp/template.html', {'form': form})

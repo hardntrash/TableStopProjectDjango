@@ -1,17 +1,18 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
+import _sqlite3
 from django.db import models
 
 
 # Create your models here.
+class Bus_numbers(models.Model):
+    class Meta:
+        db_table = 'tableBus'
+    number = models.IntegerField(unique=True)
 
 class Bus_Stops(models.Model):
-    number_bus = models.IntegerField()
-    stop_1 = models.CharField(max_length=500, blank=True)
-    stop_2 = models.CharField(max_length=500, blank=True)
-    stop_3 = models.CharField(max_length=500, blank=True)
-    stop_4 = models.CharField(max_length=500, blank=True)
-
-    def __str__(self):
-        return str(self.number_bus)
+    class Meta:
+        db_table = 'tableStops'
+    bus = models.ForeignKey(Bus_numbers)
+    name_stop = models.CharField(max_length=500)
+    time = models.CharField(max_length=500)
