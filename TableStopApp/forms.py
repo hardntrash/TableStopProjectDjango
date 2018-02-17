@@ -11,4 +11,4 @@ class BusForm(forms.ModelForm):
 
     class Meta:
         model = Bus_Stops
-        fields = ('bus', 'time',)
+        fields = ('bus', 'name_stop',)

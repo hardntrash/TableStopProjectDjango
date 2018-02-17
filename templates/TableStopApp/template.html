@@ -1,8 +1,8 @@
 {% block content %}
-<form  method="get">
+<form action="testshow.html" method="get" >
   {% csrf_token %}
-  {{ form.numberBus }}
-  {{ form.nameStop }}
-  <input type="submit" value="Показать расписание">
+    <p align="center">{{ form.numberBus }}</p>
+    <p align="center">{{ form.nameStop }}</p>
+    <p align="center"><input type="submit" value="Показать расписание"></p>
 </form>
 {% endblock %}
