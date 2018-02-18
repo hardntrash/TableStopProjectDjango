@@ -31,12 +31,14 @@ def TestShow(request):
 
 
 def ActualyTime(req):
-    allTimes = TimeForBus.objects.get(bus_id=req.GET['numberBus'], stop_id=req.GET['nameStop']).time.split(', ')
+    allTimes = TimeForBus.objects.get(bus_id=req.GET['numberBus'],
+                                      stop_id=req.GET['nameStop']).time.split(', ')
+    actTimes = []
     for x in allTimes:
         t = datetime.datetime.strptime(x, '%H:%M').time()
-        if TimeNow() > str(t):
-            allTimes.remove(x)
-    return '%s' % '  '.join(allTimes)
+        if TimeNow() < str(t):
+            actTimes.append(str(x))
+    return '%s' % '  '.join(actTimes)
 
 
 def TimeNow():

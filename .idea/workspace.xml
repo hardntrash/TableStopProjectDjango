@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="44e5488e-5925-4dd3-b2b1-c9640a09b89c" name="Default" comment="Заработала форма с выбором автобуса и отсановки.">
+    <list default="true" id="44e5488e-5925-4dd3-b2b1-c9640a09b89c" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/TableStopApp/admin.py" afterPath="$PROJECT_DIR$/TableStopApp/admin.py" />
-      <change beforePath="$PROJECT_DIR$/TableStopApp/forms.py" afterPath="$PROJECT_DIR$/TableStopApp/forms.py" />
-      <change beforePath="$PROJECT_DIR$/TableStopApp/models.py" afterPath="$PROJECT_DIR$/TableStopApp/models.py" />
+      <change beforePath="$PROJECT_DIR$/TableStopApp/static/TableStopApp/IMG_0168.JPG" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/TableStopApp/static/TableStopApp/style.css" afterPath="" />
       <change beforePath="$PROJECT_DIR$/TableStopApp/views.py" afterPath="$PROJECT_DIR$/TableStopApp/views.py" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
+      <change beforePath="$PROJECT_DIR$/TableStopsProject/settings.py" afterPath="$PROJECT_DIR$/TableStopsProject/settings.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -36,8 +35,8 @@
       <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TableStopsProject/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="663">
-              <caret line="39" column="19" lean-forward="false" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="19" />
+            <state relative-caret-position="64">
+              <caret line="109" column="19" lean-forward="false" selection-start-line="109" selection-start-column="19" selection-end-line="109" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -102,8 +101,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TableStopApp/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-501">
-              <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+            <state relative-caret-position="94">
+              <caret line="38" column="22" lean-forward="false" selection-start-line="38" selection-start-column="22" selection-end-line="38" selection-end-column="22" />
               <folding>
                 <element signature="e#24#63#0" expanded="true" />
               </folding>
@@ -170,7 +169,6 @@
         <option value="$PROJECT_DIR$/table_classes/views.py" />
         <option value="$PROJECT_DIR$/table_classes/forms.py" />
         <option value="$PROJECT_DIR$/templates/table_Classes/timetable.html" />
-        <option value="$PROJECT_DIR$/TableStopsProject/settings.py" />
         <option value="$PROJECT_DIR$/templates/TableStopApp/testshow.html" />
         <option value="$USER_HOME$/Envs/TableDjangoEnv/local/lib/python2.7/site-packages/django/forms/models.py" />
         <option value="$PROJECT_DIR$/TableStopsProject/urls.py" />
@@ -178,6 +176,7 @@
         <option value="$PROJECT_DIR$/TableStopApp/admin.py" />
         <option value="$PROJECT_DIR$/TableStopApp/models.py" />
         <option value="$PROJECT_DIR$/TableStopApp/forms.py" />
+        <option value="$PROJECT_DIR$/TableStopsProject/settings.py" />
         <option value="$PROJECT_DIR$/TableStopApp/views.py" />
       </list>
     </option>
@@ -240,6 +239,12 @@
               <item name="TableStopsProject" type="b2602c69:ProjectViewProjectNode" />
               <item name="TableStopsProject" type="462c0819:PsiDirectoryNode" />
               <item name="TableStopApp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TableStopsProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TableStopsProject" type="462c0819:PsiDirectoryNode" />
+              <item name="TableStopApp" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="TableStopsProject" type="b2602c69:ProjectViewProjectNode" />
@@ -378,7 +383,14 @@
       <option name="project" value="LOCAL" />
       <updated>1518907561014</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Добавил вывод актуального времени">
+      <created>1518919594384</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1518919594384</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -435,11 +447,12 @@
     <MESSAGE value="Удалил лишнее от учебника, сделал наработки для хоть какой то работы сайта" />
     <MESSAGE value="Работал пример c StackOver', но я и его сломал" />
     <MESSAGE value="Заработала форма с выбором автобуса и отсановки." />
-    <option name="LAST_COMMIT_MESSAGE" value="Заработала форма с выбором автобуса и отсановки." />
+    <MESSAGE value="Добавил вывод актуального времени" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил вывод актуального времени" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="26" />
+      <option name="time" value="28" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -600,14 +613,6 @@
     <entry file="file://$PROJECT_DIR$/table_classes/admin.py" />
     <entry file="file://$PROJECT_DIR$/table_classes/forms.py" />
     <entry file="file://$PROJECT_DIR$/table_classes/models.py" />
-    <entry file="file://$PROJECT_DIR$/TableStopsProject/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="39" column="19" lean-forward="false" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TableStopApp/apps.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -644,16 +649,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TableStopApp/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="20" column="1" lean-forward="false" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
-          <folding>
-            <element signature="e#24#48#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TableStopApp/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -661,14 +656,6 @@
           <folding>
             <element signature="e#24#63#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/TableStopApp/template.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="34" lean-forward="true" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -682,10 +669,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/TableStopApp/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="20" column="1" lean-forward="false" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
+          <folding>
+            <element signature="e#24#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/TableStopApp/template.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="34" lean-forward="true" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TableStopsProject/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="109" column="19" lean-forward="false" selection-start-line="109" selection-start-column="19" selection-end-line="109" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/TableStopApp/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-501">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+        <state relative-caret-position="94">
+          <caret line="38" column="22" lean-forward="false" selection-start-line="38" selection-start-column="22" selection-end-line="38" selection-end-column="22" />
           <folding>
             <element signature="e#24#63#0" expanded="true" />
           </folding>
