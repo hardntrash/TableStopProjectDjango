@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django import forms
-from models import Bus_Stops, Bus_numbers
+from models import Bus_Stops, Bus_numbers, TimeForBus
 
 
 class BusForm(forms.ModelForm):
@@ -12,3 +12,10 @@ class BusForm(forms.ModelForm):
     class Meta:
         model = Bus_Stops
         fields = ('bus', 'name_stop',)
+
+#class ShowForm(forms.ModelForm):
+#    class Meta:
+#        model = TimeForBus
+#        fields = ('time',)
+#
+#    time = forms
