@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 import datetime
 import time
 
+from django import forms
 from django.http import HttpResponse
 from django.shortcuts import render
 
@@ -20,7 +21,7 @@ def BusFormView(request):
 
 def TestShow(request):
     if ('numberBus' in request.GET) and ('nameStop' in request.GET):
-        message = 'Номер автобуса: %s Название остановки: %s Время: %s NOW: %s' % (
+        message = 'Номер автобуса: %s Название остановки: %s Автобус будет в: %s\n  Время сейчас: %s' % (
         Bus_numbers.objects.get(id=request.GET['numberBus']).number,
         Bus_Stops.objects.get(id=request.GET['nameStop']).name_stop,
         ActualyTime(request),
@@ -38,7 +39,11 @@ def ActualyTime(req):
         t = datetime.datetime.strptime(x, '%H:%M').time()
         if TimeNow() < str(t):
             actTimes.append(str(x))
-    return '%s' % '  '.join(actTimes)
+
+    if actTimes.__len__() != 0:
+        return '%s' % '  '.join(actTimes)
+    else:
+        return 'Нет автобусов'
 
 
 def TimeNow():

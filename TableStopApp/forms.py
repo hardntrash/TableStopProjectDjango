@@ -10,12 +10,12 @@ class BusForm(forms.ModelForm):
                                       widget=forms.Select(attrs={'nameStop': 'dropdown'}), label="Остановка")
 
     class Meta:
-        model = Bus_Stops
-        fields = ('bus', 'name_stop',)
+        model = Bus_numbers
+        fields = ('number',)
 
 #class ShowForm(forms.ModelForm):
 #    class Meta:
 #        model = TimeForBus
 #        fields = ('time',)
-#
+
 #    time = forms
