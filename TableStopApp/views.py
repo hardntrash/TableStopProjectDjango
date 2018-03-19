@@ -20,30 +20,34 @@ def BusFormView(request):
 
 
 def TestShow(request):
-    if ('numberBus' in request.GET) and ('nameStop' in request.GET):
+    if ActualyTime(request) != 0:
         message = 'Номер автобуса: %s Название остановки: %s Автобус будет в: %s\n  Время сейчас: %s' % (
-        Bus_numbers.objects.get(id=request.GET['numberBus']).number,
-        Bus_Stops.objects.get(id=request.GET['nameStop']).name_stop,
+        Bus_numbers.objects.get(id=request.GET['numberBus']).number,        Bus_Stops.objects.get(id=request.GET['nameStop']).name_stop,
         ActualyTime(request),
         TimeNow())
     else:
-        message = 'You submitted an empty form.'
-    return HttpResponse(message)
+        message = 'Неверные данные'
+    return render(request, 'TableStopApp/testshow.html', {'message':message})
+
 
 
 def ActualyTime(req):
-    allTimes = TimeForBus.objects.get(bus_id=req.GET['numberBus'],
-                                      stop_id=req.GET['nameStop']).time.split(', ')
-    actTimes = []
-    for x in allTimes:
-        t = datetime.datetime.strptime(x, '%H:%M').time()
-        if TimeNow() < str(t):
-            actTimes.append(str(x))
+    if TimeForBus.objects.filter(bus_id=req.GET['numberBus'], stop_id=req.GET['nameStop']).exists():
 
-    if actTimes.__len__() != 0:
-        return '%s' % '  '.join(actTimes)
+        allTimes = TimeForBus.objects.get(bus_id=req.GET['numberBus'],
+                                          stop_id=req.GET['nameStop']).time.split(', ')
+        actTimes = []
+        for x in allTimes:
+            t = datetime.datetime.strptime(x, '%H:%M').time()
+            if TimeNow() < str(t):
+                actTimes.append(str(x))
+
+        if actTimes.__len__() != 0:
+            return '%s' % '  '.join(actTimes)
+        else:
+            return 'Нет автобусов'
     else:
-        return 'Нет автобусов'
+        return 0
 
 
 def TimeNow():
