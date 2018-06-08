@@ -15,12 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from django.views.generic.base import TemplateView
 from TableStopApp import views
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', views.BusFormView),
-    url(r'^testshow', views.TestShow)
+    url(r'^$', views.bus_form_view),
+    url(r'^show_time', views.show_time_view),
+    url(r'^select_stop', views.stop_form_view),
 ]

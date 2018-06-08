@@ -1,0 +1,11 @@
+{% block content %}
+<form action="/show_time/" method="get" >
+  {% csrf_token %}
+    <p align="center">{{ form.nameStops }}</p>
+    <p align="center"><input type="submit" value="Показать время"></p>
+    <a href="select_bus">К выбору автобуса</a>
+</form>
+    <form action="" method="get">
+        <a href="select_bus">К выбору автобуса</a>
+    </form>
+{% endblock %}

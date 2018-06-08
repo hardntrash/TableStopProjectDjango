@@ -4,5 +4,6 @@ from __future__ import unicode_literals
 from django.apps import AppConfig
 
 
-class TablestopappConfig(AppConfig):
-    name = 'TableStopApp'
+class TableStopAppConfig(AppConfig):
+    name = u'TableStopApp'
+    verbose_name = u'Расписание автобусов'

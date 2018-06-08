@@ -1,45 +1,53 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+from django.shortcuts import render
+from TableStopApp.forms import BusForm, StopForm
+from TableStopApp.models import TimeForBus, BusStop, BusNumber
 
 import datetime
 import time
 
-from django import forms
-from django.http import HttpResponse
-from django.shortcuts import render
 
-from forms import BusForm
-from models import TimeForBus, Bus_Stops, Bus_numbers
+numberBus = int()
 
 
 # Create your views here.
 
-def BusFormView(request):
+def bus_form_view(request):
     form = BusForm()
-    return render(request, 'TableStopApp/template.html', {'form': form})
+    return render(request, 'TableStopApp/select_bus.html', {'form': form})
 
 
-def TestShow(request):
-    if ActualyTime(request) != 0:
+def stop_form_view(request):
+    global numberBus
+    numberBus = request.GET['numberBus']
+    form = StopForm(TimeForBus.objects.filter(bus_id=request.GET['numberBus']))
+    return render(request, 'TableStopApp/select_stop.html', {'form': form})
+
+
+def show_time_view(request):
+    global numberBus
+
+    if actually_time(request, numberBus) != 0:
         message = 'Номер автобуса: %s Название остановки: %s Автобус будет в: %s\n  Время сейчас: %s' % (
-        Bus_numbers.objects.get(id=request.GET['numberBus']).number,        Bus_Stops.objects.get(id=request.GET['nameStop']).name_stop,
-        ActualyTime(request),
-        TimeNow())
+            BusNumber.objects.get(id=numberBus).number,
+            BusStop.objects.get(id=request.GET['nameStops']).name_stop,
+            actually_time(request, numberBus),
+            time_now())
     else:
         message = 'Неверные данные'
-    return render(request, 'TableStopApp/testshow.html', {'message':message})
+    return render(request, 'TableStopApp/show_time.html', {'message': message})
 
 
+def actually_time(req, num):
+    if TimeForBus.objects.filter(bus_id=num, stop_id=req.GET['nameStops']).exists():
 
-def ActualyTime(req):
-    if TimeForBus.objects.filter(bus_id=req.GET['numberBus'], stop_id=req.GET['nameStop']).exists():
-
-        allTimes = TimeForBus.objects.get(bus_id=req.GET['numberBus'],
-                                          stop_id=req.GET['nameStop']).time.split(', ')
+        allTimes = TimeForBus.objects.get(bus_id=num,
+                                          stop_id=req.GET['nameStops']).time.split(', ')
         actTimes = []
         for x in allTimes:
             t = datetime.datetime.strptime(x, '%H:%M').time()
-            if TimeNow() < str(t):
+            if time_now() < str(t):
                 actTimes.append(str(x))
 
         if actTimes.__len__() != 0:
@@ -50,6 +58,6 @@ def ActualyTime(req):
         return 0
 
 
-def TimeNow():
+def time_now():
     now = time.strftime('%H:%M:%S', time.localtime())
     return now

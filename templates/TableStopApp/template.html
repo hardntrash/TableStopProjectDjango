@@ -1,8 +1,0 @@
-{% block content %}
-<form action="/testshow/" method="get" >
-  {% csrf_token %}
-    <p align="center">{{ form.numberBus }}</p>
-    <p align="center">{{ form.nameStop }}</p>
-    <p align="center"><input type="submit" value="Показать расписание"></p>
-</form>
-{% endblock %}

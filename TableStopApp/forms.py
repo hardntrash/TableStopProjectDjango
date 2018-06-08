@@ -1,21 +1,16 @@
 # -*- coding: utf-8 -*-
 from django import forms
-from models import Bus_Stops, Bus_numbers, TimeForBus
+from TableStopApp.models import BusStop, BusNumber
 
 
-class BusForm(forms.ModelForm):
-    numberBus = forms.ModelChoiceField(queryset=Bus_numbers.objects.all(), empty_label="Выберите автобус",
+class BusForm(forms.Form):
+    numberBus = forms.ModelChoiceField(queryset=BusNumber.objects.all(), empty_label="Выберите автобус",
                                        widget=forms.Select(attrs={'numberBus': 'dropdown'}), label="Автобус")
-    nameStop = forms.ModelChoiceField(queryset=Bus_Stops.objects.all(), empty_label="Выберите остановку",
-                                      widget=forms.Select(attrs={'nameStop': 'dropdown'}), label="Остановка")
 
-    class Meta:
-        model = Bus_numbers
-        fields = ('number',)
 
-#class ShowForm(forms.ModelForm):
-#    class Meta:
-#        model = TimeForBus
-#        fields = ('time',)
+class StopForm(forms.Form):
+    nameStops = forms.ModelChoiceField(queryset=BusStop.objects.all(), initial='class')
 
-#    time = forms
+    def __init__(self, my_arg1):
+        super(StopForm, self).__init__()
+        self.fields['nameStops'].queryset = my_arg1
