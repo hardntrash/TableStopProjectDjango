@@ -1,12 +1,31 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Расписание автобусов</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'my_style.css' %}">
 </head>
 <body>
-{{ message }}
-<a href="select_stop">К выбору остановки</a>
-<a href="localhost:8000">К выбору автобуса</a>
+
+<h1>Расписание автобусов</h1>
+    <div class="parent">
+        <div class="result">
+            <h3>Актуальное время на сегодня:</h3>
+            <p>Номер автобуса: {{ res_num_bus }}</p>
+            <p>Название остановки: {{ res_name_stop }}</p>
+            <p>Автобус будет в: {{ res_actually_time }}</p>
+            <p class="bold-text">Время:</p>
+        <p class="time-now">{{ res_time_now }}</p>
+            <form action="/">
+                <p align="center"><input type="submit" value="Вернуться в выбору автобуса" class="button-return"></p>
+            </form>
+{#            <form action="/select_stop/" method="get">#}
+{#                {% csrf_token %}#}
+{#                <p align="center"><input type="submit" value="Вернуться в выбору остановки" class="button-return"></p>#}
+{#            </form>#}
+        </div>
+    </div>
 </body>
 </html>
+

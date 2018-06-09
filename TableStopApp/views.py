@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.shortcuts import render
+from django.utils.datastructures import MultiValueDictKeyError
+
 from TableStopApp.forms import BusForm, StopForm
 from TableStopApp.models import TimeForBus, BusStop, BusNumber
 
@@ -15,28 +17,38 @@ numberBus = int()
 
 def bus_form_view(request):
     form = BusForm()
-    return render(request, 'TableStopApp/select_bus.html', {'form': form})
+    return render(request, 'TableStopApp/select_bus.html', {'form': form, 'time_now': time_now()})
 
 
 def stop_form_view(request):
     global numberBus
-    numberBus = request.GET['numberBus']
+    try:
+        numberBus = request.GET['numberBus']
+    except MultiValueDictKeyError:
+        numberBus = numberBus
     form = StopForm(TimeForBus.objects.filter(bus_id=request.GET['numberBus']))
-    return render(request, 'TableStopApp/select_stop.html', {'form': form})
+    return render(request, 'TableStopApp/select_stop.html', {'form': form, 'time_now': time_now()})
 
 
 def show_time_view(request):
     global numberBus
 
     if actually_time(request, numberBus) != 0:
-        message = 'Номер автобуса: %s Название остановки: %s Автобус будет в: %s\n  Время сейчас: %s' % (
-            BusNumber.objects.get(id=numberBus).number,
-            BusStop.objects.get(id=request.GET['nameStops']).name_stop,
-            actually_time(request, numberBus),
-            time_now())
+        # message = 'Номер автобуса: %s Название остановки: %s Автобус будет в: %s\n  Время сейчас: %s' % (
+        #     BusNumber.objects.get(id=numberBus).number,
+        #     BusStop.objects.get(id=request.GET['nameStops']).name_stop,
+        #     actually_time(request, numberBus),
+        #     time_now())
+        res_num_bus = BusNumber.objects.get(id=numberBus).number
+        res_name_stop =  BusStop.objects.get(id=request.GET['nameStops']).name_stop
+        res_actually_time = actually_time(request, numberBus)
+        res_time_now = time_now()
     else:
-        message = 'Неверные данные'
-    return render(request, 'TableStopApp/show_time.html', {'message': message})
+        res_time_now = 'Неверные данные'
+    return render(request, 'TableStopApp/show_time.html', {'res_num_bus': res_num_bus,
+                                                           'res_name_stop': res_name_stop,
+                                                           'res_actually_time': res_actually_time,
+                                                           'res_time_now': res_time_now})
 
 
 def actually_time(req, num):
@@ -53,7 +65,7 @@ def actually_time(req, num):
         if actTimes.__len__() != 0:
             return '%s' % '  '.join(actTimes)
         else:
-            return 'Нет автобусов'
+            return 'сегодня атобусов больше нет'
     else:
         return 0
 

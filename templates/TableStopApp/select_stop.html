@@ -1,11 +1,32 @@
-{% block content %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Расписание автобусов</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'my_style.css' %}">
+</head>
+<body>
+<h1>Расписание автобусов</h1>
+<div class="parent">
+<div class="result">
+<h3>Выберите остановку из списка</h3>
 <form action="/show_time/" method="get" >
   {% csrf_token %}
-    <p align="center">{{ form.nameStops }}</p>
-    <p align="center"><input type="submit" value="Показать время"></p>
-    <a href="select_bus">К выбору автобуса</a>
+    <div align="center"> <select name="nameStops" class="dropdown-list" align="center" required="true">
+        {% for y in form.nameStops %}
+            {{ y }}
+        {% endfor %}
+    </select>
+    </div>
+    <p align="center"><input type="submit" value="Показать актуальное время на сегодня" class="button"></p>
 </form>
-    <form action="" method="get">
-        <a href="select_bus">К выбору автобуса</a>
-    </form>
-{% endblock %}
+<form action="/">
+        <p align="center"><input type="submit" value="Вернуться в выбору автобуса" class="button-return"></p>
+</form>
+<p class="bold-text">Время:</p>
+    <p class="time-now">{{ time_now }}</p>
+</div>
+</div>
+</body>
+</html>

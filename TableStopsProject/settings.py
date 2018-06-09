@@ -30,7 +30,7 @@ SECRET_KEY = 'nf!glf99&t1f*7=835@s64fln-&o$1t5m#ky39l$d1)*gf54l$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['hardntrash.pythonanywhere.com']
 
 
 # Application definition

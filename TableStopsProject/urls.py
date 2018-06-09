@@ -21,6 +21,7 @@ from TableStopApp import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.bus_form_view),
+    url(r'^select_bus', views.bus_form_view),
     url(r'^show_time', views.show_time_view),
     url(r'^select_stop', views.stop_form_view),
 ]
