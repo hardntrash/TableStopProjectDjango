@@ -34,11 +34,6 @@ def show_time_view(request):
     global numberBus
 
     if actually_time(request, numberBus) != 0:
-        # message = 'Номер автобуса: %s Название остановки: %s Автобус будет в: %s\n  Время сейчас: %s' % (
-        #     BusNumber.objects.get(id=numberBus).number,
-        #     BusStop.objects.get(id=request.GET['nameStops']).name_stop,
-        #     actually_time(request, numberBus),
-        #     time_now())
         res_num_bus = BusNumber.objects.get(id=numberBus).number
         res_name_stop =  BusStop.objects.get(id = TimeForBus.objects.get(bus_id=numberBus, id=request.GET['nameStops']).stop_id).name_stop
         res_actually_time = actually_time(request, numberBus)
