@@ -40,22 +40,25 @@ def show_time_view(request):
         #     actually_time(request, numberBus),
         #     time_now())
         res_num_bus = BusNumber.objects.get(id=numberBus).number
-        res_name_stop =  BusStop.objects.get(id=request.GET['nameStops']).name_stop
+        res_name_stop =  BusStop.objects.get(id = TimeForBus.objects.get(bus_id=numberBus, id=request.GET['nameStops']).stop_id).name_stop
         res_actually_time = actually_time(request, numberBus)
         res_time_now = time_now()
     else:
-        res_time_now = 'Неверные данные'
+        res_num_bus = ''
+        res_name_stop = ''
+        res_actually_time = 'Неверные данные'
+        res_time_now = time_now()
     return render(request, 'TableStopApp/show_time.html', {'res_num_bus': res_num_bus,
-                                                           'res_name_stop': res_name_stop,
+                                                           'res_name_stop':res_name_stop,
                                                            'res_actually_time': res_actually_time,
                                                            'res_time_now': res_time_now})
 
 
 def actually_time(req, num):
-    if TimeForBus.objects.filter(bus_id=num, stop_id=req.GET['nameStops']).exists():
+    if TimeForBus.objects.filter(bus_id=num, id=req.GET['nameStops']).exists():
 
         allTimes = TimeForBus.objects.get(bus_id=num,
-                                          stop_id=req.GET['nameStops']).time.split(', ')
+                                          id=req.GET['nameStops']).time.split(', ')
         actTimes = []
         for x in allTimes:
             t = datetime.datetime.strptime(x, '%H:%M').time()
